@@ -123,21 +123,15 @@ router.get("/getproductsone/:id", async (req, res) => {
 router.post("/addcart/:id", authenticate, async (req, res) => {
 
     try {
-        console.log("perfect 6");
         const { id } = req.params;
         const cart = await Products.findOne({ id: id });
-        console.log(cart + "cart milta hain");
 
         const Usercontact = await User.findOne({ _id: req.userID });
-        console.log(Usercontact + "user milta hain");
-
-
+    
         if (Usercontact) {
             const cartData = await Usercontact.addcartdata(cart);
 
             await Usercontact.save();
-            console.log(cartData + " thse save wait kr");
-            console.log(Usercontact + "userjode save");
             res.status(201).json(Usercontact);
         }
     } catch (error) {
@@ -181,7 +175,7 @@ router.get("/logout", authenticate, async (req, res) => {
         res.clearCookie("ecommerce", { path: "/" });
         req.rootUser.save();
         res.status(201).json(req.rootUser.tokens);
-        console.log("user logout");
+       // console.log("user logout");
 
     } catch (error) {
         console.log(error + "jwt provide then logout");
@@ -200,7 +194,6 @@ router.get("/remove/:id", authenticate, async (req, res) => {
 
         req.rootUser.save();
         res.status(201).json(req.rootUser);
-        console.log("items remove");
 
     } catch (error) {
         console.log(error + "provide jwt then remove");
