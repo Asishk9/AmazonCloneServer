@@ -86,12 +86,3 @@ const User = new mongoose.model("USER", userSchema);
 
 module.exports = User;
 
-
-// carts:Array
-// jo aavi rite carts ne add karso to pn chale other wise je old methods 6 eto use krvij
-// carts:[
-//     {
-//         cart:Object
-//     }
-// ]
-//  this.carts = this.carts.concat({cart}); // to pachi cart ne destructring krine lakhvu
