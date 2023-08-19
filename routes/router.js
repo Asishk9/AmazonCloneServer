@@ -188,7 +188,7 @@ router.get("/logout", authenticate, async (req, res) => {
     }
 });
 
-// remove iteam from the cart
+// remove items from the cart
 
 router.get("/remove/:id", authenticate, async (req, res) => {
     try {
@@ -200,7 +200,7 @@ router.get("/remove/:id", authenticate, async (req, res) => {
 
         req.rootUser.save();
         res.status(201).json(req.rootUser);
-        console.log("iteam remove");
+        console.log("items remove");
 
     } catch (error) {
         console.log(error + "provide jwt then remove");
